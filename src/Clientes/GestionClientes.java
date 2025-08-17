@@ -4,71 +4,98 @@
  */
 package Clientes;
 
+import Lists.List;
+import Personas.Persona;
 import java.util.ArrayList;
+import java.util.HashSet;
+
 
 /**
  *
  * @author USER
  */
-public class GestionClientes {
-     private ArrayList<Cliente> clientes = new ArrayList<>();
+public class GestionClientes implements List<Cliente> {
+    private ArrayList<Cliente> clientes;
 
-    public boolean validarCliente(Cliente cliente) {
-        return esCedulaUnica(cliente.getCedula()) &&
-               cliente.getEdad() >= 18 &&
-               esTelefonoValido(cliente.getTelefono()) &&
-               esCorreoValido(cliente.getCorreo()) &&
-               !cliente.getLicencia().isEmpty();
+    public GestionClientes() {
+        clientes = new ArrayList<>();
     }
 
-    public boolean esCedulaUnica(String cedula) {
-        return buscarCliente(cedula) == null;
+    @Override
+    public boolean add(Cliente t) {
+         if (find(t.getCedula()) != null) return false;
+        clientes.add(t);
+        return true;
+
     }
 
-    public boolean esTelefonoValido(String telefono) {
-        return telefono.matches("^\\d{8}$");
+    @Override
+    public boolean remove(Cliente t) {
+         if (tieneReservasActivas(t)) {
+            throw new IllegalStateException("No se puede eliminar el cliente porque tiene reservas activas.");
+        }
+
+        return clientes.removeIf(c -> c.getCedula().equals(t.getCedula()));
+
     }
 
-    public boolean esCorreoValido(String correo) {
-        return correo.matches("^[\\w.-]+@[\\w.-]+\\.\\w{2,}$");
-    }
-
-    public void agregarCliente(Cliente cliente) {
-        clientes.add(cliente);
-    }
-
-    public Cliente buscarCliente(String cedula) {
+    @Override
+    public Cliente find(Object id) {
+        String cedula = String.valueOf(id);
         for (Cliente c : clientes) {
-            if (c.getCedula().equals(cedula)) return c;
+            if (c.getCedula().equals(cedula)) {
+                return c;
+            }
         }
         return null;
     }
 
-    public boolean eliminarCliente(String cedula, boolean tieneReservaActiva) {
-        Cliente c = buscarCliente(cedula);
-        if (c != null && !tieneReservaActiva) {
-            clientes.remove(c);
-            return true;
+    @Override
+    public void showAll() {
+        for (Cliente c : clientes) {
+            System.out.println(c + ", edad: " + c.getEdad());
         }
+    }
+     public boolean update(String cedula, String nuevoTelefono, String nuevoCorreo, String nuevaLicencia) {
+        Cliente cliente = find(cedula);
+        if (cliente == null) return false;
+
+        if (!Persona.validarTelefono(nuevoTelefono)) return false;
+        if (!Persona.validarCorreo(nuevoCorreo)) return false;
+        if (nuevaLicencia == null || nuevaLicencia.isEmpty()) return false;
+
+        cliente.setTelefono(nuevoTelefono);
+        cliente.setCorreo(nuevoCorreo);
+        cliente.setLicencia(nuevaLicencia);
+        return true;
+    }
+
+
+    private boolean tieneReservasActivas(Cliente t) {
+        // Simulación: reemplaza con tu lógica real
         return false;
     }
 
-    public boolean actualizarCliente(String cedula, String nuevoTelefono, String nuevoCorreo, String nuevaLicencia) {
-        Cliente c = buscarCliente(cedula);
-        if (c != null &&
-            esTelefonoValido(nuevoTelefono) &&
-            esCorreoValido(nuevoCorreo) &&
-            !nuevaLicencia.isEmpty()) {
-            
-            c.setTelefono(nuevoTelefono);
-            c.setCorreo(nuevoCorreo);
-            c.setLicencia(nuevaLicencia);
-            return true;
+    public HashSet<String> getCedulasRegistradas() {
+        HashSet<String> set = new HashSet<>();
+        for (Cliente c : clientes) {
+            set.add(c.getCedula());
         }
-        return false;
+        return set;
+    }
+    public HashSet<String> getCorreosUnicos() {
+        HashSet<String> set = new HashSet<>();
+        for (Cliente c : clientes) {
+            set.add(c.getCorreo());
+        }
+        return set;
     }
 
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
+    public HashSet<String> getLicenciasUnicas() {
+        HashSet<String> set = new HashSet<>();
+        for (Cliente c : clientes) {
+            set.add(c.getLicencia());
+        }
+        return set;
     }
 }

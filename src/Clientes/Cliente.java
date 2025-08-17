@@ -4,65 +4,37 @@
  */
 package Clientes;
 
+import Personas.Persona;
 import java.time.LocalDate;
-import java.time.Period;
+
 
 /**
  *
  * @author USER
  */
-public class Cliente {
-   private String cedula;
-    private String nombre;
-    private LocalDate fechaNacimiento;
-    private String telefono;
-    private String correo;
+public abstract class Cliente extends Persona {
+   
     private String licencia;
 
     public Cliente(String cedula, String nombre, LocalDate fechaNacimiento, String telefono, String correo, String licencia) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
-        this.telefono = telefono;
-        this.correo = correo;
+        super(cedula, nombre, fechaNacimiento, telefono, correo);
+         if (licencia == null || licencia.isEmpty()) {
+            throw new IllegalArgumentException("No se puede registrar cliente sin número de licencia.");
+        }
+
         this.licencia = licencia;
     }
 
-     public int getEdad() {
-        return Period.between(fechaNacimiento, LocalDate.now()).getYears();
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public String getLicencia() {
-        return licencia;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public String getLicencia() { 
+        return licencia; 
     }
 
     public void setLicencia(String licencia) {
         this.licencia = licencia;
     }
-
-     
+  @Override
+    public String toString() {
+        return "Persona{" + "cedula:" + cedula + ", nombre:" + nombre + ", fechaNacimiento:" + fechaNacimiento + ", telefono:" + telefono + ", correo:" + correo +", licencia=" + licencia +  '}';
+    }
+    
 }
