@@ -8,14 +8,14 @@ package Vehiculos;
  *
  * @author gipsy
  */
-public enum Tipo_de_Vehiculo {
+public enum Tipo_de_vehiculo {
     SEDAN("Sedan"),
     SUV("SUV"),
     PICKUP("Pick-up");
     
     private final String description;
 
-    private Tipo_de_Vehiculo(String description) {
+    private Tipo_de_vehiculo(String description) {
         this.description = description;
     }
 
