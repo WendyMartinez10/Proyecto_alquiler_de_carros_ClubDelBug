@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+
 /**
  *
  * @author gipsy
@@ -19,8 +21,10 @@ public class GestorVehiculos implements ListGestionVehiculos<Vehiculos> {
         this.map = new HashMap<>();
     }
     @Override 
-    public boolean add(Vehiculos t){
-        if (map.containsKey(t.getPlaca())) return false;
+    public boolean add(Vehiculos t) throws ExcepcionVehiculo{
+        if (map.containsKey(t.getPlaca())) {
+            throw new ExcepcionVehiculo("Ya existe un vehiculo con esa placa");
+        }
         map.put(t.getPlaca(), t);
         return true;
     }
@@ -37,22 +41,37 @@ public class GestorVehiculos implements ListGestionVehiculos<Vehiculos> {
         return true;
         
     }
+
+    
     @Override
-    public Vehiculos find(Object Id) {
-        String Placa = String.valueOf(Id);
-        return map.get(Placa);
+    public Vehiculos find(Object Id)  throws ExcepcionVehiculo {
+        if(!(Id instanceof String)) {
+             throw new ExcepcionVehiculo("Debes Ingresar una placa valida");
+        }
+        String Placa = (String) Id;
+        Vehiculos v = map.get(Placa);
+        if (v == null){
+            throw new ExcepcionVehiculo("No se encontro ningun vehiculo con la placa: "+ Placa);
+        }
+            return v; 
     
     }
     
 
     @Override
     public void showAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       for(Vehiculos v : map.values()){
+           System.out.println(v);
     }
+
+    }
+}
+    
+
 
    
 
   
-}
+
 
    

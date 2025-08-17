@@ -9,11 +9,12 @@ package Vehiculos;
  * @author gipsy
  */
 public interface ListGestionVehiculos <T> {
-    boolean add(T t);
+    boolean add(T t) throws ExcepcionVehiculo;
       
     boolean remove(T t) throws ExcepcionVehiculo;
-    
-    T find(Object Id);
+ 
+    T find(Object Id)  throws ExcepcionVehiculo;
     
     void showAll();
 }
+
