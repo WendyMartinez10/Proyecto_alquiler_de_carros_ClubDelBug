@@ -10,6 +10,6 @@ package Vehiculos;
  */
 public class ExcepcionVehiculo extends Exception {
     public ExcepcionVehiculo(String Mensaje){
-        super(Mensaje);
+        super("No se puede eliminar un Vehiculo Alquilado");
     }
 }
