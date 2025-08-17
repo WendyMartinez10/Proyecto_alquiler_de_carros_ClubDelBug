@@ -23,7 +23,7 @@ public class Contratos {
     private double monto;
     private boolean activo;
 
-    public Contratos(String idContrato, Reservas reserva, Clientes cliente, Vehiculos vehiculos, LocalDate fechaInicio, LocalDate fechaFinal, double monto) {
+    public Contratos(String idContrato, Reserva reserva, Cliente cliente, Vehiculos vehiculos, LocalDate fechaInicio, LocalDate fechaFinal, double monto) {
         this.idContrato = idContrato;
         this.reserva = reserva;
         this.cliente = cliente;
@@ -33,6 +33,8 @@ public class Contratos {
         this.monto = monto;
         this.activo = true;
     }
+
+  
 
     public String getIdContrato() {
         return idContrato;
@@ -68,6 +70,11 @@ public class Contratos {
     } else {
         return false;
     }
+    }
+
+    @Override
+    public String toString() {
+        return "Contratos: " + "idContrato=" + idContrato + ", reserva=" + reserva + ", cliente=" + cliente + ", vehiculos=" + vehiculos + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", monto=" + monto + ", activo=" + activo;
     }
     
     
