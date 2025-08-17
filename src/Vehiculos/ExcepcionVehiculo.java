@@ -9,7 +9,7 @@ package Vehiculos;
  * @author gipsy
  */
 public class ExcepcionVehiculo extends Exception {
-    public ExcepcionVehiculo(String mensaje){
-        super(mensaje);
+    public ExcepcionVehiculo(String Mensaje){
+        super(Mensaje);
     }
 }
