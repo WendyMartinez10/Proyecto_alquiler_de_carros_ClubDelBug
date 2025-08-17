@@ -2,40 +2,48 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reservas;
+package Contrato;
 
 import Clientes.Cliente;
+import Reservas.Reserva;
 import Vehiculos.Vehiculos;
 import java.time.LocalDate;
-import Utils.UtilFecha;
 
 /**
  *
  * @author josep
  */
-public class Reserva {
-    private String idReserva;
-    private Cliente clientes;
+public class Contratos {
+    private String idContrato;
+    private Reserva reserva;
+    private Cliente cliente;
     private Vehiculos vehiculos;
     private LocalDate fechaInicio;
     private LocalDate fechaFinal;
+    private double monto;
     private boolean activo;
 
-    public Reserva(String idReserva, Cliente clientes, Vehiculos vehiculos, LocalDate fechaInicio, LocalDate fechaFinal) {
-        this.idReserva = idReserva;
-        this.clientes = clientes;
+    public Contratos(String idContrato, Reservas reserva, Clientes cliente, Vehiculos vehiculos, LocalDate fechaInicio, LocalDate fechaFinal, double monto) {
+        this.idContrato = idContrato;
+        this.reserva = reserva;
+        this.cliente = cliente;
         this.vehiculos = vehiculos;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
+        this.monto = monto;
         this.activo = true;
     }
 
-    public String getIdReserva() {
-        return idReserva;
+    public String getIdContrato() {
+        return idContrato;
     }
 
-    public Cliente getClientes() {
-        return clientes;
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
     }
 
     public Vehiculos getVehiculos() {
@@ -50,18 +58,17 @@ public class Reserva {
         return fechaFinal;
     }
 
+    public double getMonto() {
+        return monto;
+    }
+
     public boolean isActivo() {
-       if (activo) {
+        if (activo) {
         return true;
     } else {
         return false;
     }
     }
     
-
-    @Override
-    public String toString() {
-        return "Reserva: " + "idReserva=" + idReserva + ", clientes=" + clientes + ", vehiculos=" + vehiculos + ", fechaInicio=" + fechaInicio + ", fechaFinal=" + fechaFinal + ", activo=" + activo;
-    }
     
 }
