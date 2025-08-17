@@ -15,7 +15,7 @@ public class Vehiculos {
     private String Placa;
     private String modelo;
     private int Año;
-    private Tipo_de_Vehiculo tipo;
+    private Tipo_de_vehiculo tipo;
     private Estado_Vehiculo estado;
     
     private void ValidarDatos(String Marca,String Placa,String modelo,int año,String tipo,String estado ) throws ExcepcionVehiculo{
@@ -31,7 +31,7 @@ public class Vehiculos {
      if (!AñoValido(año)){
          throw new ExcepcionVehiculo("Año inválido.");
      }
-     if(!Tipo_de_Vehiculo.esValido(tipo)) {
+     if(!Tipo_de_vehiculo.esValido(tipo)) {
          throw new ExcepcionVehiculo("Tipo de vehículo inválido.");
         }
      if(!Estado_Vehiculo.esValido(estado)) 
@@ -63,7 +63,7 @@ public class Vehiculos {
         return Año;
     }
 
-    public Tipo_de_Vehiculo getTipo() {
+    public Tipo_de_vehiculo getTipo() {
         return tipo;
     }
 
@@ -100,9 +100,9 @@ public class Vehiculos {
     
 
     public void setTipo(String tipo) throws ExcepcionVehiculo {
-        if (!Tipo_de_Vehiculo.esValido(tipo)) 
+        if (!Tipo_de_vehiculo.esValido(tipo)) 
              throw new ExcepcionVehiculo("Tipo inválido.");
-        this.tipo = Tipo_de_Vehiculo.valueOf(tipo.toUpperCase());
+        this.tipo = Tipo_de_vehiculo.valueOf(tipo.toUpperCase());
     }
 
     public void setEstado(String estado)  throws ExcepcionVehiculo {
@@ -117,7 +117,7 @@ public class Vehiculos {
         this.Placa = Placa;
         this.modelo = modelo;
         this.Año = Año;
-        this.tipo = Tipo_de_Vehiculo.valueOf(tipo.toUpperCase());
+        this.tipo = Tipo_de_vehiculo.valueOf(tipo.toUpperCase());
         this.estado = Estado_Vehiculo.valueOf(estado.toUpperCase());
     }
 
