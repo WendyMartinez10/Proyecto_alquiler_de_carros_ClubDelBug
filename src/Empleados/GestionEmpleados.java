@@ -4,26 +4,39 @@
  */
 package Empleados;
 
+import Lists.List;
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *
  * @author AsusVivobook
  */
-public class GestionEmpleados {
+public class GestionEmpleados implements List<Empleado> {
 
-    private List<Empleado> empleados;
+    private ArrayList<Empleado> empleados;
 
     public GestionEmpleados() {
         empleados = new ArrayList<>();
     }
 
-    public void agregarEmpleado(Empleado e) {
+    @Override
+    public boolean add(Empleado e) {
+        if (find(e.getCedula()) != null) {
+            return false; 
+        }
         empleados.add(e);
+        return true;
     }
 
-    public Empleado buscarPorCedula(String cedula) {
+    @Override
+    public boolean remove(Empleado e) {
+        return empleados.removeIf(emp -> emp.getCedula().equals(e.getCedula()));
+    }
+
+    @Override
+    public Empleado find(Object id) {
+        String cedula = String.valueOf(id);
         for (Empleado e : empleados) {
             if (e.getCedula().equals(cedula)) {
                 return e;
@@ -32,16 +45,23 @@ public class GestionEmpleados {
         return null;
     }
 
-    public boolean eliminarPorCedula(String cedula) {
-        Empleado e = buscarPorCedula(cedula);
+    @Override
+    public void showAll() {
+        //Por si la interfaz necesita la lista 
+    }
+
+    public boolean update(String cedula, String nuevoTelefono, String nuevoCorreo, String nuevoPuesto) {
+        Empleado e = find(cedula);
         if (e != null) {
-            empleados.remove(e);
+            e.setTelefono(nuevoTelefono);
+            e.setCorreo(nuevoCorreo);
+            e.setPuesto(nuevoPuesto);
             return true;
         }
         return false;
     }
 
-    public List<Empleado> listarEmpleados() {
-        return empleados;
+    public ArrayList<Empleado> getEmpleados() {
+        return new ArrayList<>(empleados); 
     }
 }
