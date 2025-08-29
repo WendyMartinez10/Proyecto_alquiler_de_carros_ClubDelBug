@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Vistas.Secundarias;
+package Empleados;
 
-import BaseDeDatos.GestorClientes;
-import BaseDeDatos.GestorEmpleados;
-import Clases.Cliente;
-import Clases.Empleado;
+import Clientes.GestorClientes;
+import Empleados.GestorEmpleados;
+import Clientes.Cliente;
+import Empleados.Empleado;
 import java.awt.Color;
 
 import java.awt.event.FocusAdapter;
