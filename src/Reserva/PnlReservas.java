@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Vistas.Secundarias;
+package Reserva;
 
-import BaseDeDatos.GestorClientes;
-import BaseDeDatos.GestorContratos;
-import BaseDeDatos.GestorEmpleados;
-import BaseDeDatos.GestorReservas;
-import BaseDeDatos.GestorVehiculos;
-import Clases.Cliente;
-import Clases.ContratoVehiculo;
-import Clases.Empleado;
-import Clases.Reserva;
+import Clientes.GestorClientes;
+import ContractoVehiculo.GestorContratos;
+import Empleados.GestorEmpleados;
+import Reserva.GestorReservas;
+import Vehiculos.GestorVehiculos;
+import Clientes.Cliente;
+import ContractoVehiculo.ContratoVehiculo;
+import Empleados.Empleado;
+import Reserva.Reserva;
 import Clases.Vehiculo;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
