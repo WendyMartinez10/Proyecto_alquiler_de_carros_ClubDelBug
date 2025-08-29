@@ -7,7 +7,7 @@ package Clases;
 import java.time.LocalDate;
 /**
  *
- * @author wen
+ * @author AsusVivobook
  */
 public class Empleado extends Persona {
     private String puesto;
