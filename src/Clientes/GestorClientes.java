@@ -3,9 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Clientes;
-
-import Clases.Cliente;
-import Clases.Reserva;
+import Reserva.Reserva;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
