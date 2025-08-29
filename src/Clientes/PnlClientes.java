@@ -4,7 +4,6 @@
  */
 package Clientes;
 
-import Clases.Cliente;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
