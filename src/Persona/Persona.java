@@ -2,19 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Clases;
-
+package Persona;
 import java.time.LocalDate;
 /**
  *
  * @author wen
  */
-abstract class Persona {
-    protected String cedula;
-    protected String nombre;
-    protected LocalDate fechaNacimiento;
-    protected String telefono;
-    protected String correo;
+public abstract class Persona {
+    public String cedula;
+    public String nombre;
+    public LocalDate fechaNacimiento;
+    public String telefono;
+    public String correo;
 
     public Persona(String cedula, String nombre, LocalDate fechaNacimiento, String telefono, String correo) {
         this.cedula = cedula;
