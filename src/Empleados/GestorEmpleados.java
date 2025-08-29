@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author wen
+ * @author AsusVivobook
  */
 public class GestorEmpleados {
      private ArrayList<Empleado> empleados = new ArrayList<>();
