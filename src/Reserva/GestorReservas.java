@@ -4,7 +4,7 @@
  */
 package Reserva;
 
-import Clases.Reserva;
+import Reserva.Reserva;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
