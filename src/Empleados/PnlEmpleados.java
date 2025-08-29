@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author wen
+ * @author AsusVivobook
  */
 public class PnlEmpleados extends javax.swing.JPanel {
 
